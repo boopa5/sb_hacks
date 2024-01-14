@@ -70,6 +70,7 @@ def document(filename):
     return render_template('document.html', file=filename, question=question)
 
 
+
 # @app.route('document/<filename>', methods = ['GET', 'POST'])
 # def document_questions(filename, question):
 #     return render_template('document.html', filename=filename, question=question)
