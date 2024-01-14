@@ -3,17 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>Our Awesome App</title>
+    <link rel="stylesheet" href="../static/styles.css">
   </head>
 
   <body>
 
 
-    <h1>Hello World!</h1>
+    <h1>Saved Documents</h1>
     {% for file in file_names %}
+    <div class="preview">
     <a href= "{{url_for('doc', filename = file)}}">
-      <p>{{file}}</p>
+      {% set new_name = file.replace('_', ' ') %}
+
+      
+      <h2>{{new_name[:-4]}}</h2>
+    
+      <embed src="{{ url_for('static', filename='images/' + file[:-4] + '.jpg')}}" width="262.5px" height="350px" />
     </a>
-      <embed src="{{ url_for('static', filename='uploads/' + file)}}" width="150px" height="350px" />
+    </div>
     
     {% endfor %}
 
