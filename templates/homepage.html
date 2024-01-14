@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Our Awesome App</title>
+  </head>
+
+  <body>
+
+
+    <h1>Hello World!</h1>
+    {% for file in file_names %}
+    <a href= "{{url_for('doc', filename = file)}}">
+      <p>{{file}}</p>
+    </a>
+      <embed src="{{ url_for('static', filename='uploads/' + file)}}" width="150px" height="350px" />
+    
+    {% endfor %}
+
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Upload">
+    </form>
+
+  </body>
+
+</html>
