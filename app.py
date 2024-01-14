@@ -60,10 +60,19 @@ def index():
     return render_template('homepage.html', file_names=file_names)
 
 
-@app.route('/document/<filename>')
-def doc(filename):
-    return render_template('document.html', file=filename)
+@app.route('/document/<filename>', methods = ['GET', 'POST'])
+def document(filename):
+    question = ""
+    if request.method == 'POST':
+        question = request.form['question']
 
+    print(f"this is the question: {question}")
+    return render_template('document.html', file=filename, question=question)
+
+
+# @app.route('document/<filename>', methods = ['GET', 'POST'])
+# def document_questions(filename, question):
+#     return render_template('document.html', filename=filename, question=question)
 
 if __name__ == '__main__':
     app.run(debug=True)

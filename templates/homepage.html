@@ -12,19 +12,19 @@
     <h1>Saved Documents</h1>
     {% for file in file_names %}
     <div class="preview">
-    <a href= "{{url_for('doc', filename = file)}}">
+    <a href= "{{url_for('document', filename = file)}}">
       {% set new_name = file.replace('_', ' ') %}
 
       
       <h2>{{new_name[:-4]}}</h2>
     
-      <embed src="{{ url_for('static', filename='images/' + file[:-4] + '.jpg')}}" width="262.5px" height="350px" />
+      <embed src="{{ '/static/images/' + file[:-4] + '.jpg' }}" width="262.5px" height="350px" />
     </a>
     </div>
     
     {% endfor %}
 
-    <form method="post" enctype="multipart/form-data">
+    <form method="post">
       <input type="file" name="file">
       <input type="submit" value="Upload">
     </form>
